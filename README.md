@@ -2,7 +2,7 @@
 
 Sinclair ZX Spectrum BASIC mandelbrot (in 10 lines or less)
 
-Prints a Mandelbrot as characters. Since calculating the Mandelbrot is quite intensive for an 8-bit machine, and the ZX Spectrum is a 1980's computer, this 
+Prints a Mandelbrot as characters. Since calculating the Mandelbrot is quite intensive for an 8-bit machine, and the ZX Spectrum is a 1980's computer, this takes some time to execute and complete.
 
 Originally started for the BASIC 10 Liner contest https://gkanold.wixsite.com/homeputerium/rules2021
 
@@ -37,7 +37,7 @@ The string-base is required so that the Sinclair BASIC match. The strict bool so
 
 # Loading the slow Sinclair BASIC version:
 
-Use either the tape (tzx) or the snapshot (szx) versions in an emulator, for example Fuse. The snapshot is a Spectrum 128K image, but the tape should load into a 48K or 128K machine. It shouls also load into a Spectrum Next - although this hasn't been tested.
+Use either the tape (tzx) or the snapshot (szx) versions in an emulator, for example Fuse. The snapshot is a Spectrum 128K image, but the tape should load into a 48K or 128K machine. It should also load into a Spectrum Next - although this hasn't been tested.
 
 For the snapshot (szx), you will need to type 'RUN' after loading the program. The tape file (tzx) will auto run (it was saved with SAVE "Mandel" LINE 0).
 
