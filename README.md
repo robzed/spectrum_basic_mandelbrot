@@ -8,6 +8,12 @@ Originally started for the BASIC 10 Liner contest https://gkanold.wixsite.com/ho
 
 ![Image of Mandelbrot](images/overview.png)
 
+# Key
+
+5-6-7-8 for moment (7=Up, 5=Left, 6=Down, 8=Right).
+
+Space bar for _to be coded :-)_
+
 
 # Running the Fast version
 
