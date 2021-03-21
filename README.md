@@ -28,7 +28,7 @@ This uses Boriel's ZXBasic compiler: https://zxbasic.readthedocs.io/en/latest/ar
 
 The command line we use to compile it to a tape file is:
 
-../zxbasic/zxbc.py Mandelbrot_fast.bas  --tzx --BASIC --autorun --string-base=1 -O2 --strict-bool
+../zxbasic/zxbc.py Mandelbrot_fast.bas  --tzx --BASIC --autorun --string-base=1 -O2 --strict-bool --strict
 
 ## Command Line Options
 
