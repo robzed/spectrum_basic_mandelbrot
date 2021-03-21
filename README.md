@@ -80,6 +80,7 @@ _insert more details here_
 
 # Formatted and Commented Source Code
 
+
 5 DIM p,q,t,x,y,x2,y2,r,c as FIXED    ' define 
 10 cls
    DIM a$(81)
@@ -105,5 +106,31 @@ _insert more details here_
 80 PRINT PAPER 7-i/10;a$(i);
 90 NEXT c
    NEXT r
+
+## Variable list
+
+The variables are shortened - which doesn't help with meaningfuul names. Here is a list of variables and their usage:
+
+i  =
+p  =
+q  =
+t  =
+x  =
+y  = 
+x2 =
+y2 =
+r  =
+c  =
+z  =
+f  =
+w  =
+k  =
+v  =
+
+
+# Future enhancements
+
+ - Replace pause (used for key debounce) for a more intelligent method (one press, and repeat hold).
+ - Support shifted 5678 and/or WASD/wasd
 
 
