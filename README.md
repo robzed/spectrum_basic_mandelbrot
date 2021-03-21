@@ -6,6 +6,8 @@ Prints a Mandelbrot as characters. Since calculating the Mandelbrot is quite int
 
 Originally started for the BASIC 10 Liner contest https://gkanold.wixsite.com/homeputerium/rules2021
 
+![Image of Mandelbrot](images/overview.png)
+
 
 # Running the Fast version
 
