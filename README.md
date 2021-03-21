@@ -28,7 +28,11 @@ This uses Boriel's ZXBasic compiler: https://zxbasic.readthedocs.io/en/latest/ar
 
 The command line we use to compile it to a tape file is:
 
-../zxbasic/zxbc.py Mandelbrot_fast.bas  --tzx --BASIC --autorun --string-base=1 -O2
+../zxbasic/zxbc.py Mandelbrot_fast.bas  --tzx --BASIC --autorun --string-base=1 -O2 --strict-bool
+
+## Command Line Options
+
+The string-base is required so that the Sinclair BASIC match. The strict bool so we can use bool in complex expressions like Sinclair BASIC.
 
 
 # Loading the slow Sinclair BASIC version:

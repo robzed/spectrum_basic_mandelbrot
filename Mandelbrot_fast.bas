@@ -6,10 +6,10 @@
 50 LET x2=x*x: LET y2=y*y: IF x2+y2>4 OR i>70 THEN GOTO 80
 60 LET l$=INKEY$:IF l$<>"" THEN 
  LET k=CODE l$:LET w=PEEK z+f:
- print w;" ";
+ 'print w;" ";
  LET w=((w>127)*(w-128))+(w<128)*w:
  'print " ";w;" k";k;" ";
-  print w
+  'print w
  POKE z+f,w:
  LET f=f+(k=56)-(k=53)+32*((k=54)-(k=55)):
  'print f;
