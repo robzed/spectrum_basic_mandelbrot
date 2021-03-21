@@ -51,16 +51,21 @@ moving to 16-bit computers.
 
 # Acknowledgements
 
-* Based on the Wikipedia article here: https://en.wikipedia.org/wiki/Mandelbrot_set, with the idea of using ASCII characters from a stackoverflow post here: https://stackoverflow.com/questions/811074/what-is-the-coolest-thing-you-can-do-in-10-lines-of-simple-code-help-me-inspir
+ * Based on the Wikipedia article here: https://en.wikipedia.org/wiki/Mandelbrot_set, with the idea of using ASCII characters from a stackoverflow post here: https://stackoverflow.com/questions/811074/what-is-the-coolest-thing-you-can-do-in-10-lines-of-simple-code-help-me-inspir
 
-* Thanks to Boriel for the BASIC compiler https://github.com/boriel/zxbasic
+ * Thanks to Boriel for the BASIC compiler https://github.com/boriel/zxbasic
 
+ * Thanks to http://angrydill.com/wasd/ for showing the impossible is possible. Also for the key movement idea.
 
 # 'Minified' Source Code
 
-The contest specifies restrictions for source - but apart from one letter variable names no other tricks have been used. It depends whether you count ASCII version or the Sinclair version how many characters. 
+The contest specifies restrictions for source - but no major tricks have been used. It depends whether you count ASCII version or the Sinclair version how many characters. But the text complies with x characters per line. The following items have compressed the source slightly:
 
-_insert actual details here_
+ * One letter variable names.(No conflicts between integer and string to support compiler).
+ * Movement is an expression not IF string compares.
+ * Multiple statements on each line
+
+_insert more details here_
 
 
 # Formatted and Commented Source Code
