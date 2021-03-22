@@ -1,6 +1,6 @@
-# Introduction
+# Mandelbrot Explorer for the Sinclair ZX Spectrum
 
-Sinclair ZX Spectrum BASIC mandelbrot (in 10 lines or less)
+A character-based Mandelbrot explorer in BASIC (in 10 lines or less!!)
 
 Prints a Mandelbrot as characters. Since calculating the Mandelbrot is quite intensive for an 8-bit machine, and the ZX Spectrum is a 1980's computer, this takes some time to execute and complete.
 
@@ -8,11 +8,11 @@ Originally started for the BASIC 10 Liner contest https://gkanold.wixsite.com/ho
 
 ![Image of Mandelbrot](images/overview.png)
 
-# Key
+# Keys
 
-5-6-7-8 for moment (7=Up, 5=Left, 6=Down, 8=Right).
+5-6-7-8 for moment (7=Up, 5=Left, 6=Down, 8=Right) (not shifted)
 
-Space bar for _to be coded :-)_
+Space bar for zoom - 1x, 2x, 4x (then resets to 1x)
 
 
 # Running the Fast version
@@ -129,8 +129,13 @@ v  =
 
 
 # Future enhancements
-
- - Replace pause (used for key debounce) for a more intelligent method (one press, and repeat hold).
+ - Make it back to 10 lines
+ - Write description above
+ - Get Sinclair version working
+ - Submit to contest
+ - Print a status line with Zoom level and keys
+ - Expand the colours 
+ - Allow zoom levels of more than 4x
  - Support shifted 5678 and/or WASD/wasd
-
+ - Support held key repeat for movement keys
 

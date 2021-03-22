@@ -1,11 +1,10 @@
 5 DIM p,q,t,x,y,x2,y2,r,c,d,e,g,h as FIXED:DIM z,f,w,k as Integer:DIM v,m as Byte
-10 DIM a$(81):FOR i=1 TO 81:LET a$(i)=CHR$(32+i):NEXT i:CLS:LET o$=";"
-20 CLS: LET d=-1: LET e=1: LET g=-2: LET h=1: LET z=22528:LET f=0:LET m=0
-30 LET p=(h-g)/31:LET q=(e-d)/21:IF m=5 THEN GOTO 10
+10 DIM a$(81):FOR i=1 TO 81:LET a$(i)=CHR$(32+i):NEXT i:CLS:LET l$=";"
+20 LET d=-1: LET e=1: LET g=-2: LET h=1: LET z=22528:LET f=0:LET m=0
+30 PRINT AT 0,0;:LET p=(h-g)/31:LET q=(e-d)/21:IF m=3 THEN GOTO 10
 40 FOR r=d TO e STEP q: FOR c=g TO h STEP p: LET x=0: LET y=0: LET i=1
 50 LET x2=x*x: LET y2=y*y: IF x2+y2>4 OR i>70 THEN GOTO 80
-60 LET l$=INKEY$:IF l$<>"" AND o$<>l$ THEN
- LET o$=l$ 
+60 LET o$=l$: LET l$=INKEY$:IF l$<>"" AND o$<>l$ THEN
  LET k=CODE l$:LET w=PEEK (z+f):
  'print w;" ";
  LET w=((w>127)*(w-128))+(w<128)*w:
@@ -19,7 +18,7 @@
  LET w=PEEK(z+f):
  POKE z+f,w+128:
  'print ">";f;"<"
- PAUSE 20
+ 'PAUSE 20
  IF l$=" " THEN 
  ' TODO: have a way of zooming or unzooming (unzooming could be a cycle)
  LET m=m+1:
