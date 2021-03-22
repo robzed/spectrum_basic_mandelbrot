@@ -6,21 +6,14 @@
 50 LET x2=x*x: LET y2=y*y: IF x2+y2>4 OR i>70 THEN GOTO 80
 60 LET o$=l$: LET l$=INKEY$:IF l$<>"" AND o$<>l$ THEN
  LET k=CODE l$:LET w=PEEK (z+f):
- 'print w;" ";
  LET w=((w>127)*(w-128))+(w<128)*w:
- 'print " ";w;" k";k;" ";
-  'print w
  POKE z+f,w:
  LET v=(k=56)-(k=53)+32*((k=54)-(k=55))
  LET f=f+v:
- 'print f;" ";k=56;k=53;k=54;k=55;">";v
  LET f=(f>=0 AND f<768)*f:
  LET w=PEEK(z+f):
  POKE z+f,w+128:
- 'print ">";f;"<"
- 'PAUSE 20
  IF l$=" " THEN 
- ' TODO: have a way of zooming or unzooming (unzooming could be a cycle)
  LET m=m+1:
  ' set the  (p & q) ... these are the half the zoomed value (50%)
  ' NOTE p & q will be reset after the GOTO
@@ -28,15 +21,10 @@
  ' set the start/ ends (d & e, g, h)
  ' convert f into height and width ... x and y will be reset afterwards
  LET y=INT(f/32):LET x=(f-(y*32))
- 'print x
  LET x=g+x*(h-g)/32
- 'print x
  LET x=g+(f-(y*32))*(h-g)/32:
  LET y=d+y*(e-d)/22:
- 'print ">";p;" ";q; " ";y;" ";x
  LET d=y-q:LET e=y+q:LET g=x-p:LET h=x+p
- 'print ">";d;" ";e; " ";g;" ";h
- ' cls, then restart the for loops
  GOTO 30
  ENDIF
  ENDIF
