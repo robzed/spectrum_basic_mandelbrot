@@ -73,14 +73,14 @@ The contest specifies restrictions for source - but no major tricks have been us
 
  * One letter variable names.(No conflicts between integer and string to support compiler).
  * Movement is an expression not IF string compares.
- * Multiple statements on each line
+ * Multiple statements on each line.
 
 _insert more details here_
 
 
 # Formatted and Commented Source Code
 
-
+```
 5 DIM p,q,t,x,y,x2,y2,r,c as FIXED    ' define 
 10 cls
    DIM a$(81)
@@ -106,11 +106,13 @@ _insert more details here_
 80 PRINT PAPER 7-i/10;a$(i);
 90 NEXT c
    NEXT r
+```
 
 ## Variable list
 
 The variables are shortened - which doesn't help with meaningfuul names. Here is a list of variables and their usage:
 
+```
 i  =
 p  =
 q  =
@@ -126,7 +128,11 @@ f  =
 w  =
 k  =
 v  =
+a$ = 
+o$ = 
+l$ = 
 
+```
 
 # Future enhancements
  - Make it back to 10 lines
