@@ -210,7 +210,6 @@ l$ =
  - Write description above
  - Get Sinclair version working
  - Submit to contest
- - Print a status line with Zoom level and keys
  - Expand the colours 
  - Allow zoom levels of more than 4x
  - Support shifted 5678 and/or WASD/wasd
