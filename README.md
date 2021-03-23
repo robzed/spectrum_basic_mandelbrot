@@ -191,4 +191,5 @@ l$ = new key string
  - Support shifted 5678 and/or WASD/wasd
  - Support held key repeat for movement keys
  - When over black cursor invisible
+ - Should CLS on zoom level change
 
