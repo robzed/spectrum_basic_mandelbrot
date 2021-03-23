@@ -84,13 +84,13 @@ NOTE: The single line if's have been split across lines. This is NOT
 compilable in ZXBASIC because you'd need ENDIFs adding - this is just for ease of commenting
 
 ```
-5  DIM p,q,t,x,y,x2,y2,r,c,d,e,g,h as FIXED:
+5  DIM p,q,t,x,y,x2,y2,r,c,d,e,g,h as FIXED: ' define variables only for basic not Sinclair basic 
    DIM z,f,w,k as Integer:
    DIM v,m as Byte
 
 10 DIM a$(81):
    FOR i=1 TO 81:
-       LET a$(i)=CHR$(32+i):
+       LET a$(i)=CHR$(32+i): ' fill a character string array with different characters for printing
    NEXT i:
    CLS:
    LET l$=";"
@@ -108,11 +108,11 @@ compilable in ZXBASIC because you'd need ENDIFs adding - this is just for ease o
    LET q=(e-d)/21:
    IF m=3 THEN GOTO 10
 
-40 FOR r=d TO e STEP q: 
+40 FOR r=d TO e STEP q: ' rows, or the 'y' axis of the screen, stepped in the equation domain
    FOR c=g TO h STEP p: 
      LET x=0: 
      LET y=0: 
-     LET i=1
+     LET i=1 ' iteration depth - this is what forms the pattern
 
 50 LET x2=x*x: 
    LET y2=y*y: 
@@ -149,34 +149,6 @@ compilable in ZXBASIC because you'd need ENDIFs adding - this is just for ease o
 70 LET t=x2-y2+c:LET y=2*x*y+r:LET x=t:LET i=i+1:GOTO 50
 80 PRINT PAPER 7-i/10;a$(i);:NEXT c:NEXT r: GOTO 30
 
-
-Older code (for copying comments!)
-
-5 DIM p,q,t,x,y,x2,y2,r,c as FIXED    ' define 
-10 cls
-   DIM a$(81)
-   FOR i=1 TO 81
-      LET a$(i)=CHR$(32+i)            ' fill a character string array with different characters for printing
-   NEXT i
-   LET a$(80)=" "                     ' redundant - previously deep spaces would be a space
-20 LET p=3/31
-   LET q=2/21
-30 FOR r=-1 TO 1 STEP q               ' rows, or the 'y' axis of the screen, stepped in the equation domain
-   FOR c=-2 TO 1 STEP p
-40 LET x=0
-   LET y=0
-   LET i=1                            ' iteration depth - this is what forms the pattern
-50 LET x2=x*x
-   LET y2=y*y
-60 IF x2+y2>4 OR i>70 THEN GOTO 80
-70 LET t=x2-y2+c
-   LET y=2*x*y+r
-   LET x=t
-   LET i=i+1
-   GOTO 50
-80 PRINT PAPER 7-i/10;a$(i);
-90 NEXT c
-   NEXT r
 ```
 
 ## Variable list
@@ -184,24 +156,28 @@ Older code (for copying comments!)
 The variables are shortened - which doesn't help with meaningfuul names. Here is a list of variables and their usage:
 
 ```
-i  =
-p  =
-q  =
-t  =
-x  =
-y  = 
-x2 =
-y2 =
-r  =
-c  =
-z  =
-f  =
-w  =
-k  =
-v  =
-a$ = 
-o$ = 
-l$ = 
+d  = start y coordinate in mandelbrot domain 
+e  = end y coordinate in mandelbrot domain
+g  = start x coordinate in mandelbrot domain 
+h  = start x coordinate in mandelbrot domain 
+i  = iteration depth 
+p  = mandelbrot domain step for x for every coloum on screen
+q  = mandelbrot domain step for y for every coloum on screen
+t  = temporary used in calculations for new x and old x can be used in y calculation 
+x  = used to calculate mandelbrot 
+y  = used to calculate mandelbrot 
+x2 = x squared to reduce calcutions
+y2 = y squared to reduce calcutions
+r  = screen row (y)
+c  = screen column (x) 
+z  = colour attribute start address
+f  = screen postion between 0 and 767
+w  = colour attribute byte 
+k  = key code
+v  = movement ofset
+a$ = screen characters to be printed based on depth
+o$ = old key string 
+l$ = new key string
 
 ```
 
@@ -211,7 +187,7 @@ l$ =
  - Get Sinclair version working
  - Submit to contest
  - Expand the colours 
- - Allow zoom levels of more than 4x
+ - Allow zoom levels of more than 2x
  - Support shifted 5678 and/or WASD/wasd
  - Support held key repeat for movement keys
 
