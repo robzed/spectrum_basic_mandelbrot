@@ -183,11 +183,12 @@ l$ = new key string
 
 # Future enhancements
  - Make it back to 10 lines, 256 long.
- - Write description above
+ - Finish comments for code above and insert line limited code
  - Get Sinclair version working
  - Submit to contest
  - Expand the colours 
  - Allow zoom levels of more than 2x
  - Support shifted 5678 and/or WASD/wasd
  - Support held key repeat for movement keys
+ - When over black cursor invisible
 
