@@ -7,12 +7,13 @@ Prints a Mandelbrot as characters. Since calculating the Mandelbrot is quite int
 Originally started for the BASIC 10 Liner contest https://gkanold.wixsite.com/homeputerium/rules2021
 
 ![Image of Mandelbrot](images/overview.png)
+![Zoomed Mandelbrot](images/zoom2.png)
 
 # Keys
 
 5-6-7-8 for moment (7=Up, 5=Left, 6=Down, 8=Right) (not shifted)
 
-Space bar for zoom - 1x, 2x, 4x (then resets to 1x)
+Space bar for zoom - 1x, 2x (then resets to 1x)
 
 
 # Running the Fast version
@@ -182,7 +183,6 @@ l$ = new key string
 ```
 
 # Future enhancements
- - Make it back to 10 lines, 256 long.
  - Finish comments for code above and insert line limited code
  - Get Sinclair version working
  - Submit to contest
