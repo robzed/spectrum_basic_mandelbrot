@@ -47,7 +47,7 @@ This Spectrum BASIC version is slow - the compiled version is better.
 
 # Source code and notes between the slow and fast versions.
 
-Both the Fast and the Sinclair BASIC versions have the same code except for line 5, which defines the variables for the compiler.
+Both the Fast and the Sinclair BASIC versions have the same code except for the first DIM (definitions) on line 10, which defines the variables for the compiler.
 
 The fast version uses fixed point numbers rather than floating point, and due to this the display is very slightly different. 
 
@@ -70,7 +70,7 @@ moving to 16-bit computers.
 
 # 'Minified' Source Code
 
-The contest specifies restrictions for source - but no major tricks have been used. It depends whether you count ASCII version or the Sinclair version how many characters. But the text complies with x characters per line. The following items have compressed the source slightly:
+The contest specifies restrictions for source - but no major tricks have been used. It depends whether you count ASCII version or the Sinclair version how many characters. But the text complies with about 213 characters per line on line 90. The following items have been used to reduce the source slightly:
 
  * One letter variable names.(No conflicts between integer and string to support compiler).
  * Movement is an expression not IF string compares.
@@ -87,12 +87,13 @@ This is even without the tokenisation rule allowed for Sinclair machines here: h
 
 NOTE: The single line if's have been split across lines. This will NOT compile
 in ZXBASIC because you'd need ENDIFs adding - this is just for ease of commenting. Sinclair 
-BASIC only has statements on a single line after an IF.
+BASIC only has statements on a single line after an IF - and ZXBASIC supports this single line
+version.
 
 ```
-   ' Line 10 sets up the basic variables and clear the screen. 
-   ' The first three of these define variables only for ZXBASIC
-   ' The first three of these are missing in Sinclair BASIC version 
+   ' Line 10 sets up the BASIC variables and clears the screen. 
+   ' The first three of these define variables only for ZXBASIC.
+   ' The first three of these are missing in Sinclair BASIC version. 
 10 DIM p,q,t,x,y,x2,y2,r,c,d,e,g,h as FIXED:
    DIM z,f,w,k as Integer:
    DIM v,m as Byte: 
@@ -103,17 +104,17 @@ BASIC only has statements on a single line after an IF.
      LET a$(i)=CHR$(32+i):      ' fill a character string array with different characters in each string
    NEXT i:
    CLS:                         ' clear the screen
-   LET l$=";"                   ' something unlikely to be entered as a key
+   LET l$=";"                   ' something unlikely to be entered as a key by default.
 
    ' Line 20 sets up zoom 1x. 
    ' We jump back to here when zoom is bigger than allowed.
-20 LET d=-1:                    ' see variable description for information
+20 LET d=-1:                    ' see variable description for information on variables
    LET e=1: 
    LET g=-2: 
    LET h=1: 
    LET z=22528:                 ' this is the start of the colour (attribute) memory
    LET f=0:                     ' this is how far through the attribute memory the user has moved
-   LET m=1                      ' zoom level
+   LET m=1                      ' keep track of zoom level (actual zoom uses d,e,g,h,p,q).
 
    ' Line 30 prints the status line and calculates key step values. 
    ' Space key jumps here.
@@ -128,7 +129,7 @@ BASIC only has statements on a single line after an IF.
    ' Line 40 is the main draw screen start 
    ' It loops back here with NEXT c and NEXT r on each character 
 40 FOR r=d TO e STEP q:         ' this is the y (row) step in the Mandelbrot set function domain
-   FOR c=g TO h STEP p:          ' columns, or the 'x' axis of the screen, stepped in the equation domain
+   FOR c=g TO h STEP p:         ' columns, or the 'x' axis of the screen, stepped in the equation domain
    LET x=0: 
    LET y=0: 
    LET i=1                      ' iteration depth - this is what forms the pattern
