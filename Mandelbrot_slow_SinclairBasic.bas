@@ -1,4 +1,4 @@
-10 DIM p,q,t,x,y,x2,y2,r,c,d,e,g,h as FIXED:DIM z,f,w,k as Integer:DIM v,m as Byte: DIM a$(81):FOR i=1 TO 81:LET a$(i)=CHR$(32+i):NEXT i:CLS:LET l$=";"
+10 DIM a$(81):FOR i=1 TO 81:LET a$(i)=CHR$(32+i):NEXT i:CLS:LET l$=";"
 20 LET d=-1: LET e=1: LET g=-2: LET h=1: LET z=22528:LET f=0:LET m=1
 30 POKE 23659,0:PRINT AT 22,0;"Keys 5678  Space = Zoom ";m;"x";AT 0,0;:POKE 23659,2:LET p=(h-g)/31:LET q=(e-d)/21:IF m>2 THEN GOTO 20
 40 FOR r=d TO e STEP q: FOR c=g TO h STEP p: LET x=0: LET y=0: LET i=1

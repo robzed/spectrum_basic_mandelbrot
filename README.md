@@ -18,18 +18,18 @@ Space bar for zoom - 1x, 2x (then resets to 1x)
 
 # Running the Fast version
 
-Load the file 'Mandelbrot_fast.tzx'. It is set to Auto-run.
+Load the file 'Mandelbrot_fast.tzx'. It is set to Auto-run. In the Fuse emulator you can do this with Open File menu item. (You could also type LOAD "" from either 128K or 48K basic once you've 'inserted the tape' (in Fuse via the Media->Tape->Open menu). Other Spectrum emulators work as well, of course :-)
 
 The fast version is always up to date - we create the slow Sinclair BASIC version after working on the fast version.
 
 
 # Compiling the Fast version
 
-This uses Boriel's ZXBasic compiler: https://zxbasic.readthedocs.io/en/latest/archive/  We suggest you get it from here to get the latest version - although you can install an older version using pip. 
+The fast version uses Boriel's ZXBasic compiler: https://zxbasic.readthedocs.io/en/latest/archive/  We suggest you get it from here to get the latest version - although you can install an older version using pip. 
 
 The command line we use to compile it to a tape file is:
 
-../zxbasic/zxbc.py Mandelbrot_fast.bas  --tzx --BASIC --autorun --string-base=1 -O2 --strict-bool --strict
+    ../zxbasic/zxbc.py Mandelbrot_fast.bas  --tzx --BASIC --autorun --string-base=1 -O2 --strict-bool --strict
 
 ## Command Line Options
 
@@ -38,11 +38,15 @@ The string-base is required so that the Sinclair BASIC match. The strict bool so
 
 # Loading the slow Sinclair BASIC version:
 
-Use either the tape (tzx) or the snapshot (szx) versions in an emulator, for example Fuse. The snapshot is a Spectrum 128K image, but the tape should load into a 48K or 128K machine. It should also load into a Spectrum Next - although this hasn't been tested.
+Load the tap file into an emulator, for example Fuse. The tape should load into a 48K or 128K machine. It should also load into a Spectrum Next - although this hasn't been tested.
 
-For the snapshot (szx), you will need to type 'RUN' after loading the program. The tape file (tzx) will auto run (it was saved with SAVE "Mandel" LINE 0).
+You will need to type 'RUN' after loading the program (if you type LOAD "" from BASIC, or go to basic and type run) - it's not set to auto-run the program. Feel free to view the source in Spectrum BASIC. You will see this is the same as the .bas files in the github repo.
 
 This Spectrum BASIC version is slow - the compiled version is better.
+
+The spectrum version was converted to a tape with this command:
+
+    ../zmakebas-1.5.2/zmakebas -o Mandelbrot_slow_SinclairBasic.tap -n mandel Mandelbrot_slow_SinclairBasic.bas
 
 
 # Source code and notes between the slow and fast versions.
@@ -64,9 +68,12 @@ moving to 16-bit computers.
 
  * Based on the Wikipedia article here: https://en.wikipedia.org/wiki/Mandelbrot_set, with the idea of using ASCII characters from a stackoverflow post here: https://stackoverflow.com/questions/811074/what-is-the-coolest-thing-you-can-do-in-10-lines-of-simple-code-help-me-inspir
 
- * Thanks to Boriel for the BASIC compiler https://github.com/boriel/zxbasic
+ * Thanks to Boriel for the ZX BASIC compiler https://github.com/boriel/zxbasic
 
  * Thanks to http://angrydill.com/wasd/ for showing the impossible is possible. Also for the key movement idea.
+
+ * To Russell Marks for zmakebas - that saved a LOT of typing in a spectrum emulator! It's on github, but you can also get it here: https://derekbolli.wordpress.com/2012/11/16/create-zx-spectrum-basic-program-tap-file-from-text-source-file-in-bbedit-using-zmakebas/
+
 
 # 'Minified' Source Code
 
@@ -119,7 +126,7 @@ version.
    ' Line 30 prints the status line and calculates key step values. 
    ' Space key jumps here.
 30 POKE 23659,0:                                            ' allow printing on the bottom 2 lines
-   PRINT AT 23,0;"Keys 5678  Space = Zoom ";m;"x";AT 0,0;:  ' print keys, zoom level and set printing to start at top
+   PRINT AT 22,0;"Keys 5678  Space = Zoom ";m;"x";AT 0,0;:  ' print keys, zoom level and set printing to start at top
    POKE 23659,2:                                            ' reset bottom to lines to status ... in case of error or break
    LET p=(h-g)/31:              ' calculate the step interval for y (rows)
    LET q=(e-d)/21:              ' calculate the step internal for x (columns)
@@ -212,8 +219,7 @@ l$ = new key string
 ```
 
 # Future enhancements
- - Get Sinclair version working
- - Submit to contest
+ - Figure out why the colours apply to more characters on the Sinclair version
  - Expand the colours 
  - Allow zoom levels of more than 2x
  - Support shifted 5678 and/or WASD/wasd
@@ -221,3 +227,4 @@ l$ = new key string
  - When over black cursor invisible
  - Should CLS on zoom level change
  - Remove redundant peek (if it is redundant)
+
