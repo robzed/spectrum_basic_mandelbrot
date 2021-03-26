@@ -36,7 +36,7 @@ The command line we use to compile it to a tape file is:
 The string-base is required so that the Sinclair BASIC match. The strict bool so we can use bool in complex expressions like Sinclair BASIC.
 
 
-# Loading the slow Sinclair BASIC version:
+# Loading the slow Sinclair BASIC version
 
 Load the tap file into an emulator, for example Fuse. The tape should load into a 48K or 128K machine. It should also load into a Spectrum Next - although this hasn't been tested.
 
@@ -49,7 +49,7 @@ The spectrum version was converted to a tape with this command:
     ../zmakebas-1.5.2/zmakebas -o Mandelbrot_slow_SinclairBasic.tap -n mandel Mandelbrot_slow_SinclairBasic.bas
 
 
-# Source code and notes between the slow and fast versions.
+# Source code and notes between the slow and fast versions
 
 Both the Fast and the Sinclair BASIC versions have the same code except for the first DIM (definitions) on line 10, which defines the variables for the compiler.
 
