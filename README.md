@@ -99,7 +99,7 @@ version.
 
 ```
    ' Line 10 sets up the BASIC variables and clears the screen. 
-   ' The first three of these define variables only for ZXBASIC and not used in Sinclair BASIC version.
+   ' The first three of these define variables only for ZXBASIC and not used in Sinclair BASIC version
 10 DIM p,q,t,x,y,x2,y2,r,c,d,e,g,h as FIXED:
    DIM z,f,w,k as Integer:
    DIM v,m as Byte: 
@@ -110,17 +110,17 @@ version.
      LET a$(i)=CHR$(32+i):      ' Fill character string array with the different string characters
    NEXT i:
    CLS:                         ' Clear the screen
-   LET l$=";"                   ' Set key default needs to be something unlikely to be entered as a key by default.
+   LET l$=";"                   ' Set key default needs to be something unlikely to be entered as a key by default
 
    ' Line 20 sets up zoom 1x. 
-   ' We jump back to here when zoom is bigger than allowed.
+   ' We jump back to here when zoom is bigger than allowed
 20 LET d=-1:                    ' See variable description for information on the variables
    LET e=1: 
    LET g=-2: 
    LET h=1: 
    LET z=22528:                 ' This is the start of the colour (attribute) memory
    LET f=0:                     ' This is how far through the attribute memory the user has moved
-   LET m=1                      ' Keep track of zoom level (actual zoom uses d,e,g,h,p,q).
+   LET m=1                      ' Keep track of zoom level (actual zoom uses d,e,g,h,p,q)
 
    ' Line 30 prints the status line and calculates key step values. 
    ' Space key jumps here.
@@ -129,8 +129,8 @@ version.
    POKE 23659,2:                                            ' Reset bottom to lines to status ... in case of error or break
    LET p=(h-g)/31:              ' Calculate the step interval for y (rows)
    LET q=(e-d)/21:              ' Calculate the step internal for x (columns)
-   IF m>2 THEN GOTO 20          ' This resets the zoom level when it gets too big. 
-                                ' Currently only allows 1x and 2x. We need to do a fix for 4x. 
+   IF m>2 THEN GOTO 20          ' This resets the zoom level when it gets too big 
+                                ' Currently only allows 1x and 2x. We need to do a fix for 4x 
 
    ' Line 40 is the main draw screen start 
    ' It loops back here with NEXT c and NEXT r on each character 
@@ -146,10 +146,10 @@ version.
 
 60 LET o$=l$:                         ' Record old key before getting new key
    LET l$=INKEY$:
-   IF l$<>"" AND o$<>l$ THEN GOTO 90  ' If someone is pressing a new key, process it. 
-                                      ' NOTE: o$=l$ was a quick fix for double key presses.
+   IF l$<>"" AND o$<>l$ THEN GOTO 90  ' If someone is pressing a new key, process it 
+                                      ' NOTE: o$=l$ was a quick fix for double key presses
 
-70 LET t=x2-y2+c:                   ' This is the core of the Mandlebrot-set. See wikipedia page.
+70 LET t=x2-y2+c:                   ' This is the core of the Mandlebrot-set. See wikipedia page
    LET y=2*x*y+r:
    LET x=t:
    LET i=i+1:                       ' Count the iterations - the number of iterations is the screen colour/character
