@@ -11,7 +11,7 @@ Originally started for the BASIC 10 Liner contest https://gkanold.wixsite.com/ho
 
 # Keys
 
-5-6-7-8 for moment (7=Up, 5=Left, 6=Down, 8=Right) (not shifted)
+5-6-7-8 for moment (7=Up, 5=Left, 6=Down, 8=Right) (not shifted). These are the traditional Sinclair ZX Spectrum cursor keys, and are marked as such on ZX Spectrum keyboards.
 
 Space bar for zoom - 1x, 2x (then resets to 1x)
 
