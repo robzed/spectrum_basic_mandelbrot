@@ -74,6 +74,8 @@ moving to 16-bit computers.
 
  * To Russell Marks for zmakebas - that saved a LOT of typing in a spectrum emulator! It's on github, but you can also get it here: https://derekbolli.wordpress.com/2012/11/16/create-zx-spectrum-basic-program-tap-file-from-text-source-file-in-bbedit-using-zmakebas/
 
+ * Last but not least, thanks to BASIC 10 Liner https://basic10liner.com for actually getting us to make something for the old Speccy in BASIC :-)
+
 
 # 'Minified' Source Code
 
