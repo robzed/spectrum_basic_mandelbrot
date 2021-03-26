@@ -42,7 +42,7 @@ Load the tap file into an emulator, for example Fuse. The tape should load into 
 
 You will need to type 'RUN' after loading the program (if you type LOAD "" from BASIC, or go to basic and type run) - it's not set to auto-run the program. Feel free to view the source in Spectrum BASIC. You will see this is the same as the .bas files in the github repo.
 
-This Spectrum BASIC version is slow - the compiled version is better.
+This Spectrum BASIC version is slow - the compiled version as expected is quicker.
 
 The spectrum version was converted to a tape with this command:
 
@@ -93,99 +93,98 @@ This is even without the tokenisation rule allowed for Sinclair machines here: h
 # Formatted and Commented Source Code
 
 NOTE: The single line if's have been split across lines. This will NOT compile
-in ZXBASIC because you'd need ENDIFs adding - this is just for ease of commenting. Sinclair 
+in ZXBASIC and would require the addtion of ENDIFs - this is just for ease of commenting. Sinclair 
 BASIC only has statements on a single line after an IF - and ZXBASIC supports this single line
 version.
 
 ```
    ' Line 10 sets up the BASIC variables and clears the screen. 
-   ' The first three of these define variables only for ZXBASIC.
-   ' The first three of these are missing in Sinclair BASIC version. 
+   ' The first three of these define variables only for ZXBASIC and not used in Sinclair BASIC version.
 10 DIM p,q,t,x,y,x2,y2,r,c,d,e,g,h as FIXED:
    DIM z,f,w,k as Integer:
    DIM v,m as Byte: 
 
-   ' We create an array of characters to print for each interation level
+   ' Create an array of characters to print for each interation level
    DIM a$(81):
    FOR i=1 TO 81:
-     LET a$(i)=CHR$(32+i):      ' fill a character string array with different characters in each string
+     LET a$(i)=CHR$(32+i):      ' Fill character string array with the different string characters
    NEXT i:
-   CLS:                         ' clear the screen
-   LET l$=";"                   ' something unlikely to be entered as a key by default.
+   CLS:                         ' Clear the screen
+   LET l$=";"                   ' Set key default needs to be something unlikely to be entered as a key by default.
 
    ' Line 20 sets up zoom 1x. 
    ' We jump back to here when zoom is bigger than allowed.
-20 LET d=-1:                    ' see variable description for information on variables
+20 LET d=-1:                    ' See variable description for information on the variables
    LET e=1: 
    LET g=-2: 
    LET h=1: 
-   LET z=22528:                 ' this is the start of the colour (attribute) memory
-   LET f=0:                     ' this is how far through the attribute memory the user has moved
-   LET m=1                      ' keep track of zoom level (actual zoom uses d,e,g,h,p,q).
+   LET z=22528:                 ' This is the start of the colour (attribute) memory
+   LET f=0:                     ' This is how far through the attribute memory the user has moved
+   LET m=1                      ' Keep track of zoom level (actual zoom uses d,e,g,h,p,q).
 
    ' Line 30 prints the status line and calculates key step values. 
    ' Space key jumps here.
-30 POKE 23659,0:                                            ' allow printing on the bottom 2 lines
-   PRINT AT 22,0;"Keys 5678  Space = Zoom ";m;"x";AT 0,0;:  ' print keys, zoom level and set printing to start at top
-   POKE 23659,2:                                            ' reset bottom to lines to status ... in case of error or break
-   LET p=(h-g)/31:              ' calculate the step interval for y (rows)
-   LET q=(e-d)/21:              ' calculate the step internal for x (columns)
+30 POKE 23659,0:                                            ' Allow printing on the bottom 2 lines
+   PRINT AT 22,0;"Keys 5678  Space = Zoom ";m;"x";AT 0,0;:  ' Print keys, zoom level and set printing to start at top
+   POKE 23659,2:                                            ' Reset bottom to lines to status ... in case of error or break
+   LET p=(h-g)/31:              ' Calculate the step interval for y (rows)
+   LET q=(e-d)/21:              ' Calculate the step internal for x (columns)
    IF m>2 THEN GOTO 20          ' This resets the zoom level when it gets too big. 
-                                ' At moment it allows 1x and 2x. We need to do a fix for 4x. 
+                                ' Currently only allows 1x and 2x. We need to do a fix for 4x. 
 
    ' Line 40 is the main draw screen start 
    ' It loops back here with NEXT c and NEXT r on each character 
-40 FOR r=d TO e STEP q:         ' this is the y (row) step in the Mandelbrot set function domain
-   FOR c=g TO h STEP p:         ' columns, or the 'x' axis of the screen, stepped in the equation domain
+40 FOR r=d TO e STEP q:         ' This is the y (row) step in the Mandelbrot set function domain
+   FOR c=g TO h STEP p:         ' Columns, or the 'x' axis of the screen, stepped in the equation domain
    LET x=0: 
    LET y=0: 
-   LET i=1                      ' iteration depth - this is what forms the pattern
+   LET i=1                      ' Iteration depth - this is what forms the pattern
 
-50 LET x2=x*x:                  ' save calculating x^2 twice
-   LET y2=y*y: 
+50 LET x2=x*x:                  ' Save calculating x^2 twice for speed
+   LET y2=y*y:                  ' Save calculating y^2 twice for speed
    IF x2+y2>4 OR i>70 THEN GOTO 80    ' If x2+y2>4 or 70 iterations ... we are done with this character
 
-60 LET o$=l$:                         ' record old key before getting new key
+60 LET o$=l$:                         ' Record old key before getting new key
    LET l$=INKEY$:
    IF l$<>"" AND o$<>l$ THEN GOTO 90  ' If someone is pressing a new key, process it. 
                                       ' NOTE: o$=l$ was a quick fix for double key presses.
 
-70 LET t=x2-y2+c:                   ' this is the core of the Mandlebrot-set. See wikipedia page.
+70 LET t=x2-y2+c:                   ' This is the core of the Mandlebrot-set. See wikipedia page.
    LET y=2*x*y+r:
    LET x=t:
-   LET i=i+1:                       ' count the iterations - the number of iterations is the screen colour/character
-   GOTO 50                          ' the iterations for this character isn't done yet
+   LET i=i+1:                       ' Count the iterations - the number of iterations is the screen colour/character
+   GOTO 50                          ' The iterations for this character isn't done yet
 
-80 PRINT PAPER 7-i/10;a$(i);:       ' make a background colour, and print a character
+80 PRINT PAPER 7-i/10;a$(i);:       ' Make a background colour and print a character
    NEXT c:
    NEXT r: 
-   GOTO 30                          ' restart the screen again
+   GOTO 30                          ' Restart the screen again
 
-90 LET k=CODE l$:                   ' get the code
-   LET w=PEEK (z+f):                ' get colour byte from memory
-   LET w=((w>127)*(w-128))+(w<128)*w: ' remote bit 7 (128) - that is the flash bit
-   POKE z+f,w:                      ' clear the old flashing position
+90 LET k=CODE l$:                   ' Get the code
+   LET w=PEEK (z+f):                ' Get colour byte from memory
+   LET w=((w>127)*(w-128))+(w<128)*w: ' Remove bit 7 (128) - that is the flash bit
+   POKE z+f,w:                      ' Clear the old flashing position
    ' The next line calculates the movement of the cursor based on keys
    LET v=(k=56)-(k=53)+32*((k=54)-(k=55)):  ' These are the codes for the keys 5 6 7 8 which are spectrum cursors keys
-   LET f=f+v:                       ' move the cursor
-   LET f=(f>=0 AND f<768)*f:        ' if it's off the top or bottom of the screen, reset it to the top-left
-   LET w=PEEK(z+f):                 ' get the colour byte from memory. Is this redundant?
-   POKE z+f,w+128:                  ' make the new character position flash
-   IF l$<>" " THEN GOTO 70          ' if not space bar pressed, carry on with iterations
+   LET f=f+v:                       ' Move the cursor
+   LET f=(f>=0 AND f<768)*f:        ' If cursor off the top or bottom of the screen, reset it to the top-left
+   LET w=PEEK(z+f):                 ' Get the colour byte from memory. Is this redundant?
+   POKE z+f,w+128:                  ' Make the new character position flash
+   IF l$<>" " THEN GOTO 70          ' If not space bar pressed, carry on with iterations
 
-100 LET m=m*2:                      ' keep track of the zoom level
-                                    ' set the  (p & q) ... these are the half the zoomed value (50%)
+100 LET m=m*2:                      ' Keep track of the zoom level
+                                    ' Set the  (p & q) ... these are the half the zoomed value (50%)
     LET p=(h-g)/4:LET q=(e-d)/4:    ' NOTE p & q will be reset after the GOTO 30
-    LET y=INT(f/32):                ' convert f into height and width ... x and y will be reset afterwards
-    LET x=(f-(y*32)):               ' basically f MOD 32 ... where 32 is the screen width in characters
+    LET y=INT(f/32):                ' Convert f into height and width ... x and y will be reset afterwards
+    LET x=(f-(y*32)):               ' Basically f MOD 32 ... where 32 is the screen width in characters
     LET x=g+x*(h-g)/32:             ' x and y mid point of screen zoomed in
     LET x=g+(f-(y*32))*(h-g)/32:
     LET y=d+y*(e-d)/22:             
-    LET d=y-q:                      ' set the start/ ends (d & e, g, h)     
+    LET d=y-q:                      ' Set the start/ ends (d & e, g, h)     
     LET e=y+q:
     LET g=x-p:
     LET h=x+p: 
-    GOTO 30                         ' start screen again with new zoomed in view
+    GOTO 30                         ' Start screen again with new zoomed in view
 ```
 
 ## Variable list
