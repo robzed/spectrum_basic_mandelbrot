@@ -8,6 +8,8 @@ Originally started for the BASIC 10 Liner contest https://gkanold.wixsite.com/ho
 
 ![Image of Mandelbrot](images/overview.png)
 ![Zoomed Mandelbrot](images/zoom2.png)
+![Animated Mandelbrot Set](images/Mandlebrot_animated.gif)
+
 
 # Keys
 
